@@ -1,5 +1,23 @@
-export PATH=$HOME/bin:/usr/local/bin:$HOME/core/scripts:$PATH
+CORE=$HOME/core
+APPS=$HOME/apps
+export PATH=$HOME/bin:/usr/local/bin:$CORE/scripts:$APPS/flatc:$PATH
 export ZSH=$HOME/.oh-my-zsh
+export EDITOR=nvim
+
+alias back="cd -"
+alias xplore="xdg-open ."
+
+function proj() {
+    cd "$HOME/core/projects/$1"
+}
+
+function script() {
+    if [ -z "$1"]; then
+        echo "Pleas provide config name e.g zsh/zshrc"
+	return
+    fi
+    $EDITOR "$HOME/core/configs/$1"
+}
 
 # force set cyrilic font in tty
 tty | grep "/dev/tty[0-9]" && setfont cyr-sun16
