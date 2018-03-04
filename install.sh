@@ -59,3 +59,8 @@ if [ -z $skip ]; then
     display_warn "Don't forget to run :PlugInstall and UpdateRemotePlugins!"
 fi
 
+ask_app "tmux"
+if [ -z $skip ]; then
+    link_config "$CONFIG_STORAGE/tmux/tmux.conf.local" "$HOME/.tmux.conf.local"
+    display_warn "Don't forget to install oh-my-tmux"
+fi
