@@ -68,7 +68,7 @@ function install_package {
         ;;
         ubuntu)
             sudo apt -y install "$1"
-            if [["$1" == "python3"]]; then
+            if [[ "$1" == *"python3"* ]]; then
                 sudo apt -y install python3-pip
             fi
         ;;
@@ -106,7 +106,7 @@ function install_build_essential {
 detect_distro
 
 install_package "git"
-install_dev_package "curl"
+install_package "curl"
 
 # ================== zsh =================
 ask_app "zsh"
@@ -128,7 +128,7 @@ if [ -z $skip ]; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     mkdir -p "$HOME/.config/nvim"
     link_config "$CONFIG_STORAGE/neovim/init.vim" "$HOME/.config/nvim/init.vim"
-    sudo pip3 install nvim
+    sudo pip3 install neovim
     # Install plugins
     nvim -c "q"
     (
