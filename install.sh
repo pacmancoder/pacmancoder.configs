@@ -99,6 +99,9 @@ function install_build_essential {
     display_success "Installed build-essential"
 }
 
+# =========== Detect Distro ==============
+detect_distro
+
 # ================== zsh =================
 ask_app "zsh"
 if [ -z $skip ]; then
