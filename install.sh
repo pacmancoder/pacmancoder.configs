@@ -68,6 +68,9 @@ function install_package {
         ;;
         ubuntu)
             sudo apt -y install "$1"
+            if [["$1" == "python3"]]; then
+                sudo apt -y install python3-pip
+            fi
         ;;
     esac
     display_success "Installed $1"
@@ -101,6 +104,9 @@ function install_build_essential {
 
 # =========== Detect Distro ==============
 detect_distro
+
+install_package "git"
+install_dev_package "curl"
 
 # ================== zsh =================
 ask_app "zsh"
