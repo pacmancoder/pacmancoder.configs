@@ -57,33 +57,33 @@ function detect_distro
         echo "Cant'd detect distro"
         set -e
     fi
-    display_success "Detected %DISTRO"
+    display_success "Detected $DISTRO"
 }
 
 function install_package {
-    display_topic "==== Installing package %1 ===="
+    display_topic "==== Installing package $1 ===="
     case $DISTRO in
         solus)
-            sudo eopkg install -y "%1"
+            sudo eopkg install -y "$1"
         ;;
         ubuntu)
-            sudo apt -y install "%1"
+            sudo apt -y install "$1"
         ;;
     esac
-    display_success "Installed %1"
+    display_success "Installed $1"
 }
 
 function install_dev_package {
-    display_topic "==== Installing dev-package %1 ===="
+    display_topic "==== Installing dev-package $1 ===="
     case $DISTRO in
         solus)
-            sudo eopkg install -y "%1-devel"
+            sudo eopkg install -y "$1-devel"
         ;;
         ubuntu)
-            sudo apt -y install "%1-dev"
+            sudo apt -y install "$1-dev"
         ;;
     esac
-    display_success "Installed %1"
+    display_success "Installed $1"
 }
 
 function install_build_essential {
